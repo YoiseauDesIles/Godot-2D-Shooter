@@ -1,17 +1,23 @@
 extends Node2D
 
-var test_array: Array[String] = ["Test","sauce","stuff"]
-# Called when the node enters the scene tree for the first time.
+var laser_scene: PackedScene = preload("res://Scenes/Projectiles/laser.tscn")
+var grenade_scene: PackedScene = preload("res://Scenes/Projectiles/grenade.tscn")
+
+func _on_gate_player_entered_gate(body):
+	print("player has entered the gate")
+	print(body)
+
+
+func _on_player_laser(pos):
+	var laser = laser_scene.instantiate()
+	laser.position = pos	
+	
+	#3. add the laser instance to a node2D
+	$Projectiles.add_child(laser)
+	
+func _on_player_grenade(pos):
+	var grenade = grenade_scene.instantiate()
+	grenade.position = pos
+	$Projectiles.add_child(grenade)
 	
 	
-func test_function():
-	pass
-
-
-func _on_area_2d_body_entered(_body):
-	print("body has entered")
-
-
-func _on_area_2d_body_exited(_body):
-	print("body has exited")
-
