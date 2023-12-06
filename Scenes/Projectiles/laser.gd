@@ -1,7 +1,8 @@
 extends Area2D
 
 @export var speed: int = 1000
-var direction: Vector2 = Vector2.UP
+var direction
 
 func _process(delta):
-	position += direction * speed * delta
+	position += speed * direction * delta
+
