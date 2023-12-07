@@ -7,6 +7,8 @@
 size = Vector2(651.5, 142.5)
 
 [node name="Gate" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 11
 script = ExtResource("1_hudm7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -18,6 +20,7 @@ scale = Vector2(0.8, 0.8)
 polygon = PackedVector2Array(-1439, -777.839, -1443.32, 566.094, -1400.11, 669.806, -1326.65, 738.947, -1192.69, 782.161, -371.635, 782.161, -362.992, 669.806, -350.028, 596.343, 483.989, 596.344, 496.953, 678.449, 509.917, 769.197, 1361.22, 773.518, 1447.65, 730.305, 1503.82, 652.521, 1542.71, 583.379, 1542.71, -777.839)
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(55.25, 561.25)

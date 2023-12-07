@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwc88epokl4m2"]
+[gd_scene load_steps=18 format=3 uid="uid://cwc88epokl4m2"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_up7t6"]
 [ext_resource type="Texture2D" uid="uid://wvnq82hqa0lg" path="res://graphics/ground/stones.png" id="2_xwiut"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://clw4l4bvo2nhr" path="res://graphics/tilesets/outside_walls.png" id="9_7u4y7"]
 [ext_resource type="Texture2D" uid="uid://c7shvj3xlt2y8" path="res://graphics/tilesets/soil.png" id="10_xjg6m"]
 [ext_resource type="PackedScene" uid="uid://de1yyr3feia0t" path="res://Scenes/houses/house.tscn" id="11_ls52y"]
+[ext_resource type="PackedScene" uid="uid://4lf68ik21cc4" path="res://Scenes/Objects/steam_vent.tscn" id="12_1mgk2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yeqeq"]
 resource_name = "walls"
@@ -55,15 +56,15 @@ script = ExtResource("1_up7t6")
 
 [node name="Soil" type="Sprite2D" parent="Ground"]
 texture_repeat = 2
-position = Vector2(-3361.47, 2467)
-scale = Vector2(1.95051, 1.4176)
+position = Vector2(-2032.51, 2467)
+scale = Vector2(2.2163, 1.4176)
 texture = ExtResource("2_xwiut")
 region_enabled = true
 region_rect = Rect2(-3825.44, -1771.94, 10000, 10000)
 
 [node name="Decoration" type="Sprite2D" parent="Ground"]
 modulate = Color(1, 1, 0.737255, 1)
-position = Vector2(-1910, 970)
+position = Vector2(221, 1684)
 texture = ExtResource("3_6y2kp")
 
 [node name="TileMap" type="TileMap" parent="Ground"]
@@ -100,8 +101,11 @@ position = Vector2(2369, 349)
 texture = ExtResource("6_5gv4f")
 
 [node name="House" parent="Ground" instance=ExtResource("11_ls52y")]
-position = Vector2(-3843, 2764)
+position = Vector2(-2368, 2412)
 rotation = -2.57262
+
+[node name="SteamVent" parent="Ground" instance=ExtResource("12_1mgk2")]
+position = Vector2(-1257, 539)
 
 [node name="Player" parent="." instance=ExtResource("3_ijv62")]
 position = Vector2(471, 333)
@@ -114,6 +118,11 @@ position_smoothing_enabled = true
 position = Vector2(3, -717)
 
 [node name="Projectiles" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.211765, 0.203922, 0.203922, 1)
+energy = 0.9
+blend_mode = 1
 
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
