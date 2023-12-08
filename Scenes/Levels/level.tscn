@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwc88epokl4m2"]
+[gd_scene load_steps=20 format=3 uid="uid://cwc88epokl4m2"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_up7t6"]
 [ext_resource type="Texture2D" uid="uid://wvnq82hqa0lg" path="res://graphics/ground/stones.png" id="2_xwiut"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://c7shvj3xlt2y8" path="res://graphics/tilesets/soil.png" id="10_xjg6m"]
 [ext_resource type="PackedScene" uid="uid://de1yyr3feia0t" path="res://Scenes/houses/house.tscn" id="11_ls52y"]
 [ext_resource type="PackedScene" uid="uid://4lf68ik21cc4" path="res://Scenes/Objects/steam_vent.tscn" id="12_1mgk2"]
+[ext_resource type="PackedScene" uid="uid://dare7d2ltsdqj" path="res://Scenes/Objects/light_fan_animation.tscn" id="15_xsyjy"]
+[ext_resource type="PackedScene" uid="uid://bkavfvte6sl61" path="res://Scenes/Enemies/drone.tscn" id="16_5rce8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yeqeq"]
 resource_name = "walls"
@@ -107,6 +109,10 @@ rotation = -2.57262
 [node name="SteamVent" parent="Ground" instance=ExtResource("12_1mgk2")]
 position = Vector2(-1257, 539)
 
+[node name="Gate" parent="." instance=ExtResource("3_82dry")]
+position = Vector2(3, -717)
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="." instance=ExtResource("3_ijv62")]
 position = Vector2(471, 333)
 
@@ -114,16 +120,23 @@ position = Vector2(471, 333)
 zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 
-[node name="Gate" parent="." instance=ExtResource("3_82dry")]
-position = Vector2(3, -717)
-
 [node name="Projectiles" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.211765, 0.203922, 0.203922, 1)
 energy = 0.9
 blend_mode = 1
 
+[node name="LightFanAnimation" parent="." instance=ExtResource("15_xsyjy")]
+position = Vector2(-1884, 2025)
+autoplay = "default"
+
+[node name="Drone" parent="." instance=ExtResource("16_5rce8")]
+position = Vector2(-435, 688)
+
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]
+[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
-[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
