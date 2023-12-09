@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://blddr5rc1scyh"]
+[gd_scene load_steps=18 format=3 uid="uid://blddr5rc1scyh"]
 
 [ext_resource type="PackedScene" uid="uid://cwc88epokl4m2" path="res://Scenes/Levels/level.tscn" id="1_swamc"]
 [ext_resource type="Script" path="res://Scenes/Levels/outside.gd" id="2_46vpa"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ddashvyw6pkm" path="res://graphics/decals/moss/moss_5.png" id="9_85wd2"]
 [ext_resource type="Texture2D" uid="uid://qtvy7fxaxbhn" path="res://graphics/decals/moss/moss_3.png" id="10_u55hk"]
 [ext_resource type="PackedScene" uid="uid://de1yyr3feia0t" path="res://Scenes/houses/house.tscn" id="11_215uc"]
+[ext_resource type="PackedScene" uid="uid://37233lcjpbrd" path="res://Scenes/Items/item.tscn" id="14_w8t2n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yeqeq"]
 resource_name = "walls"
@@ -114,7 +115,7 @@ rotation = -2.57262
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." index="2"]
-position = Vector2(22, 7)
+position = Vector2(14, 171)
 max_speed = 750
 metadata/_edit_group_ = true
 
@@ -124,5 +125,8 @@ metadata/_edit_lock_ = true
 [node name="Gate" parent="." index="4" instance=ExtResource("2_sxvwc")]
 position = Vector2(-19, -856)
 metadata/_edit_lock_ = true
+
+[node name="Item" parent="." index="6" instance=ExtResource("14_w8t2n")]
+position = Vector2(-480, 296)
 
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]

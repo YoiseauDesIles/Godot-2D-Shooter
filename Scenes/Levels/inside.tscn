@@ -4,22 +4,22 @@
 [ext_resource type="TileSet" uid="uid://efqk0ufoclbp" path="res://Scenes/Levels/house.tres" id="2_otibp"]
 [ext_resource type="Texture2D" uid="uid://djv8vudb0d8d1" path="res://graphics/ground/dirt.png" id="2_t32jj"]
 [ext_resource type="Script" path="res://Scenes/Levels/inside.gd" id="2_yp51u"]
-[ext_resource type="PackedScene" uid="uid://blddr5rc1scyh" path="res://Scenes/Levels/outside.tscn" id="3_p8mj0"]
 [ext_resource type="PackedScene" uid="uid://np67t062jscm" path="res://Scenes/Objects/wall_light.tscn" id="4_5pcmb"]
 [ext_resource type="PackedScene" uid="uid://dare7d2ltsdqj" path="res://Scenes/Objects/light_fan_animation.tscn" id="4_y0nc1"]
 [ext_resource type="Texture2D" uid="uid://dgpgsl7hdjjwi" path="res://graphics/lights/overlays/infrastructure.png" id="5_7luwn"]
 [ext_resource type="PackedScene" uid="uid://m21k0a5cyyqx" path="res://Scenes/Objects/simple_light.tscn" id="5_lrgmf"]
 [ext_resource type="Texture2D" uid="uid://b34xtclrtfqxr" path="res://graphics/lights/textures/circle.png" id="6_0thhi"]
+[ext_resource type="PackedScene" uid="uid://37233lcjpbrd" path="res://Scenes/Items/item.tscn" id="10_ontg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir6v7"]
 size = Vector2(366, 717)
 
 [node name="Inside" instance=ExtResource("1_y7s6s")]
 script = ExtResource("2_yp51u")
-outside_level_scene = ExtResource("3_p8mj0")
 
 [node name="Ground" parent="." index="0"]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground" index="0"]
 texture_repeat = 2
@@ -141,6 +141,7 @@ texture_scale = 3.0
 
 [node name="Lights" parent="." index="3"]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="LightFanAnimation" parent="Lights" index="0" instance=ExtResource("4_y0nc1")]
 position = Vector2(4446, -362)
@@ -210,11 +211,15 @@ metadata/_edit_lock_ = true
 color = Color(0.270588, 0.454902, 0.517647, 1)
 energy = 1.7
 blend_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="ExitGateArea" type="Area2D" parent="." index="5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGateArea" index="0"]
 position = Vector2(5279, -392.5)
 shape = SubResource("RectangleShape2D_ir6v7")
+
+[node name="Item" parent="." index="7" instance=ExtResource("10_ontg7")]
+position = Vector2(4117, -578)
 
 [connection signal="body_entered" from="ExitGateArea" to="." method="_on_exit_gate_area_body_entered"]
