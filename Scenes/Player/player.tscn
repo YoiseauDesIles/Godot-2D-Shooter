@@ -32,6 +32,7 @@ polygon = PackedVector2Array(90, 53, 61, 54, 53, 50, 53, 44, 41, 41, 35, 43, 24,
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 31
 script = ExtResource("1_uqr7v")
+max_speed = 2000
 
 [node name="PlayerImage" type="Sprite2D" parent="."]
 position = Vector2(32, 1)
