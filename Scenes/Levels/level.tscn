@@ -9,6 +9,8 @@ script = ExtResource("1_up7t6")
 
 [node name="Ground" type="Node2D" parent="."]
 
+[node name="Items" type="Node2D" parent="."]
+
 [node name="Projectiles" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
@@ -25,4 +27,3 @@ position_smoothing_enabled = true
 
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
-[connection signal="update_stats" from="Player" to="." method="_on_player_update_stats"]

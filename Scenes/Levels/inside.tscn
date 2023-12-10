@@ -126,7 +126,7 @@ position = Vector2(-2109, 1696)
 rotation = -1.5708
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." index="2"]
+[node name="Player" parent="." index="3"]
 position = Vector2(4776, -380)
 max_speed = 500
 metadata/_edit_group_ = true
@@ -139,7 +139,20 @@ color = Color(0, 0.67451, 0.67451, 1)
 texture = ExtResource("6_0thhi")
 texture_scale = 3.0
 
-[node name="Lights" parent="." index="3"]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="4"]
+color = Color(0.270588, 0.454902, 0.517647, 1)
+energy = 1.7
+blend_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="ExitGateArea" type="Area2D" parent="." index="5"]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGateArea" index="0"]
+position = Vector2(5279, -392.5)
+shape = SubResource("RectangleShape2D_ir6v7")
+
+[node name="Lights" parent="." index="6"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -206,18 +219,6 @@ rotation = 1.5708
 scale = Vector2(3.436, 9.7039)
 texture = ExtResource("5_7luwn")
 metadata/_edit_lock_ = true
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="4"]
-color = Color(0.270588, 0.454902, 0.517647, 1)
-energy = 1.7
-blend_mode = 1
-metadata/_edit_lock_ = true
-
-[node name="ExitGateArea" type="Area2D" parent="." index="5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGateArea" index="0"]
-position = Vector2(5279, -392.5)
-shape = SubResource("RectangleShape2D_ir6v7")
 
 [node name="Item" parent="." index="7" instance=ExtResource("10_ontg7")]
 position = Vector2(4117, -578)
