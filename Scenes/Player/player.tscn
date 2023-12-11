@@ -26,7 +26,7 @@ scale_max = 0.7
 color = Color(0.113725, 1, 1, 0.384314)
 color_ramp = SubResource("GradientTexture1D_o4ga8")
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Entity"]]
 collision_mask = 31
 script = ExtResource("1_uqr7v")
 max_speed = 2000

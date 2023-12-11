@@ -188,13 +188,14 @@ linear_damp = 1.6
 script = ExtResource("1_pu6ek")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.5, 2.5)
 shape = SubResource("CircleShape2D_2nqqg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_npb0b")
 
 [node name="Explosion" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_4o15e")
 hframes = 8
 vframes = 8
@@ -210,8 +211,3 @@ color = Color(0.968627, 0.109804, 0.235294, 1)
 energy = 10.0
 texture = ExtResource("4_707w4")
 texture_scale = 0.03
-
-[node name="RedLightTimer" type="Timer" parent="."]
-wait_time = 2.0
-
-[connection signal="timeout" from="RedLightTimer" to="." method="_on_red_light_timer_timeout"]
