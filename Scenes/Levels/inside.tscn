@@ -346,7 +346,13 @@ metadata/_edit_group_ = true
 position = Vector2(5279, -392.5)
 shape = SubResource("RectangleShape2D_ir6v7")
 
-[node name="Player" parent="." index="6"]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="7"]
+color = Color(0.270588, 0.454902, 0.517647, 1)
+energy = 1.7
+blend_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." index="8"]
 position = Vector2(4877, -350)
 max_speed = 500
 metadata/_edit_group_ = true
@@ -360,13 +366,7 @@ color = Color(0, 0.67451, 0.67451, 1)
 texture = ExtResource("6_0thhi")
 texture_scale = 3.0
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="7"]
-color = Color(0.270588, 0.454902, 0.517647, 1)
-energy = 1.7
-blend_mode = 1
-metadata/_edit_lock_ = true
-
-[node name="Lights" parent="." index="8"]
+[node name="Lights" parent="." index="9"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 

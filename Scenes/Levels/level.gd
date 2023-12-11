@@ -11,8 +11,6 @@ func _ready():
 		container.connect("open", _on_container_opened)
 	for scout in get_tree().get_nodes_in_group("Scouts"):
 		scout.connect("laser", _on_scout_laser)
-		
-
 	
 
 func _on_container_opened(pos, direction):
@@ -36,7 +34,7 @@ func _on_player_laser(pos, direction):
 	
 func _on_scout_laser(pos, direction):
 	create_laser(pos, direction)
-	
+		
 func _on_player_grenade(pos, direction):
 	var grenade = grenade_scene.instantiate() as RigidBody2D
 	grenade.position = pos

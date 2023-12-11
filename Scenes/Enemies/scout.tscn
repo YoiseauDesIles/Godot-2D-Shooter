@@ -21,7 +21,6 @@ collision_mask = 11
 script = ExtResource("1_2tjxf")
 
 [node name="AttackArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
@@ -34,7 +33,6 @@ rotation = 1.5708
 texture = ExtResource("1_d2m1w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-7, 11)
 shape = SubResource("CircleShape2D_y3rnc")
 

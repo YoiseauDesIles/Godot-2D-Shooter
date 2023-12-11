@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ddashvyw6pkm" path="res://graphics/decals/moss/moss_5.png" id="9_85wd2"]
 [ext_resource type="Texture2D" uid="uid://qtvy7fxaxbhn" path="res://graphics/decals/moss/moss_3.png" id="10_u55hk"]
 [ext_resource type="PackedScene" uid="uid://de1yyr3feia0t" path="res://Scenes/houses/house.tscn" id="11_215uc"]
-[ext_resource type="PackedScene" uid="uid://vcnjnkur4kww" path="res://Scenes/Enemies/scout.tscn" id="14_wrpgy"]
+[ext_resource type="PackedScene" uid="uid://bf5cw5sjrco5p" path="res://Scenes/Enemies/bug.tscn" id="15_h1wkx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yeqeq"]
 resource_name = "walls"
@@ -118,8 +118,8 @@ metadata/_edit_lock_ = true
 position = Vector2(-19, -856)
 metadata/_edit_lock_ = true
 
-[node name="Scout" parent="Enemies" index="0" instance=ExtResource("14_wrpgy")]
-position = Vector2(866, 737)
+[node name="Bug" parent="Enemies" index="0" instance=ExtResource("15_h1wkx")]
+position = Vector2(-1356, 556)
 
 [node name="Player" parent="." index="7"]
 position = Vector2(14, 171)
