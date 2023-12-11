@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://blddr5rc1scyh"]
+[gd_scene load_steps=18 format=3 uid="uid://blddr5rc1scyh"]
 
 [ext_resource type="PackedScene" uid="uid://cwc88epokl4m2" path="res://Scenes/Levels/level.tscn" id="1_swamc"]
 [ext_resource type="Script" path="res://Scenes/Levels/outside.gd" id="2_46vpa"]
@@ -13,8 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ddashvyw6pkm" path="res://graphics/decals/moss/moss_5.png" id="9_85wd2"]
 [ext_resource type="Texture2D" uid="uid://qtvy7fxaxbhn" path="res://graphics/decals/moss/moss_3.png" id="10_u55hk"]
 [ext_resource type="PackedScene" uid="uid://de1yyr3feia0t" path="res://Scenes/houses/house.tscn" id="11_215uc"]
-[ext_resource type="PackedScene" uid="uid://cm4fh4porewrg" path="res://Scenes/Container/crate.tscn" id="15_umbgn"]
-[ext_resource type="PackedScene" uid="uid://crp4xgndj1yf6" path="res://Scenes/Container/toilet.tscn" id="16_e7a7u"]
+[ext_resource type="PackedScene" uid="uid://vcnjnkur4kww" path="res://Scenes/Enemies/scout.tscn" id="14_wrpgy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yeqeq"]
 resource_name = "walls"
@@ -53,7 +52,7 @@ sources/1 = SubResource("TileSetAtlasSource_0fi12")
 [node name="Outside" instance=ExtResource("1_swamc")]
 script = ExtResource("2_46vpa")
 
-[node name="Ground" parent="." index="0"]
+[node name="Ground" parent="." index="1"]
 metadata/_edit_lock_ = true
 
 [node name="Soil" type="Sprite2D" parent="Ground" index="0"]
@@ -115,25 +114,24 @@ position = Vector2(-2368, 2412)
 rotation = -2.57262
 metadata/_edit_lock_ = true
 
-[node name="Crate" parent="." index="1" instance=ExtResource("15_umbgn")]
-position = Vector2(-666, 504)
-rotation = -2.56563
+[node name="Gate" parent="." index="4" instance=ExtResource("2_sxvwc")]
+position = Vector2(-19, -856)
+metadata/_edit_lock_ = true
 
-[node name="Toilet" parent="." index="2" instance=ExtResource("16_e7a7u")]
-position = Vector2(595, 323)
-rotation = 1.91986
-scale = Vector2(1, 1)
+[node name="Scout" parent="Enemies" index="0" instance=ExtResource("14_wrpgy")]
+position = Vector2(866, 737)
 
-[node name="Player" parent="." index="5"]
+[node name="Player" parent="." index="7"]
 position = Vector2(14, 171)
 max_speed = 750
 metadata/_edit_group_ = true
 
-[node name="Gate" parent="." index="6" instance=ExtResource("2_sxvwc")]
-position = Vector2(-19, -856)
+[node name="Camera2D" parent="Player" index="7"]
+zoom = Vector2(0.3, 0.3)
+
+[node name="Lights" parent="." index="8"]
 metadata/_edit_lock_ = true
 
-[node name="Lights" parent="." index="7"]
-metadata/_edit_lock_ = true
-
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]

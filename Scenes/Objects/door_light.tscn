@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dji1ye1ud1hkj"]
+
+[ext_resource type="Texture2D" uid="uid://cf8aui00a2brg" path="res://graphics/objects/light.png" id="1_yjw32"]
+[ext_resource type="Texture2D" uid="uid://b34xtclrtfqxr" path="res://graphics/lights/textures/circle.png" id="2_k5ubn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_232m0"]
+radius = 13.3333
+height = 193.333
+
+[node name="DoorLight" type="StaticBody2D"]
+scale = Vector2(0.3, 0.3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_232m0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yjw32")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.172549, 0.27451, 0.262745, 1)
+energy = 4.0
+texture = ExtResource("2_k5ubn")
+texture_scale = 0.5

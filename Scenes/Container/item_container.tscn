@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b12gmdd75fcvk"]
+[gd_scene load_steps=3 format=3 uid="uid://b12gmdd75fcvk"]
 
 [ext_resource type="Script" path="res://Scenes/Container/item_container.gd" id="1_oko2k"]
+[ext_resource type="Texture2D" uid="uid://b34xtclrtfqxr" path="res://graphics/lights/textures/circle.png" id="2_sfejs"]
 
 [node name="ItemContainer" type="StaticBody2D" groups=["Containers"]]
 collision_layer = 4
@@ -14,3 +15,9 @@ script = ExtResource("1_oko2k")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="SpawnPositions" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 1, 0.584314)
+energy = 3.0
+texture = ExtResource("2_sfejs")
+texture_scale = 1.5
