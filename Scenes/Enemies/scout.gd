@@ -7,7 +7,7 @@ var can_laser: bool = true
 var right_gun_use = true
 
 var vulnerable: bool = true
-var health: int = 30
+@export var health: int = 30
 
 func _process(_delta):
 	
@@ -22,9 +22,9 @@ func _process(_delta):
 			can_laser = false
 			$Timers/LaserTimer.start()
 
-func hit():
+func hit(damages):
 	if (vulnerable):
-		health -= 10
+		health -= damages
 		vulnerable = false
 		$Timers/HitTimer.start()
 		$Sprite2D.material.set_shader_parameter("u_progress", 1)

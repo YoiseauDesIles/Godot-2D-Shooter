@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://blddr5rc1scyh"]
+[gd_scene load_steps=19 format=3 uid="uid://blddr5rc1scyh"]
 
 [ext_resource type="PackedScene" uid="uid://cwc88epokl4m2" path="res://Scenes/Levels/level.tscn" id="1_swamc"]
 [ext_resource type="Script" path="res://Scenes/Levels/outside.gd" id="2_46vpa"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ddashvyw6pkm" path="res://graphics/decals/moss/moss_5.png" id="9_85wd2"]
 [ext_resource type="Texture2D" uid="uid://qtvy7fxaxbhn" path="res://graphics/decals/moss/moss_3.png" id="10_u55hk"]
 [ext_resource type="PackedScene" uid="uid://de1yyr3feia0t" path="res://Scenes/houses/house.tscn" id="11_215uc"]
-[ext_resource type="PackedScene" uid="uid://bf5cw5sjrco5p" path="res://Scenes/Enemies/bug.tscn" id="15_h1wkx"]
+[ext_resource type="PackedScene" uid="uid://b07r8aop7pi22" path="res://Scenes/Enemies/car.tscn" id="14_n2kdd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yeqeq"]
 resource_name = "walls"
@@ -49,11 +49,18 @@ tile_size = Vector2i(390, 390)
 sources/0 = SubResource("TileSetAtlasSource_yeqeq")
 sources/1 = SubResource("TileSetAtlasSource_0fi12")
 
+[sub_resource type="Curve2D" id="Curve2D_ow4t5"]
+_data = {
+"points": PackedVector2Array(-169.706, -169.706, 169.706, 169.706, -1031, 700, -73.5391, -220.617, 73.5391, 220.617, -768, 1802, -288.325, -128.145, 288.325, 128.145, 190, 2701, -266.968, -64.0723, 266.968, 64.0723, 2300, 2726, 0, 0, 0, 0, 3631, 3430, 202.896, -800.904, -202.896, 800.904, 4480, 5067, 0, 0, 0, 0, 3273, 5729, 0, 0, 0, 0, 828, 5921, 0, 0, 0, 0, -774, 5772, 0, 0, 0, 0, -2130, 5612, 0, 0, 0, 0, -4020, 5174, 0, 0, 0, 0, -5280, 4213, -101.448, 491.221, 101.448, -491.221, -5793, 2536, -277.186, 362.039, 277.186, -362.039, -4778, 1255, -616.597, 130.108, 616.597, -130.108, -2589, 667, -237.588, -294.156, 237.588, 294.156, -1031, 700)
+}
+point_count = 16
+
 [node name="Outside" instance=ExtResource("1_swamc")]
 script = ExtResource("2_46vpa")
 
 [node name="Ground" parent="." index="1"]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Soil" type="Sprite2D" parent="Ground" index="0"]
 texture_repeat = 2
@@ -110,16 +117,13 @@ texture = ExtResource("10_u55hk")
 metadata/_edit_lock_ = true
 
 [node name="House" parent="Ground" index="8" instance=ExtResource("11_215uc")]
-position = Vector2(-2368, 2412)
+position = Vector2(-4328, 3088)
 rotation = -2.57262
 metadata/_edit_lock_ = true
 
 [node name="Gate" parent="." index="4" instance=ExtResource("2_sxvwc")]
 position = Vector2(-19, -856)
 metadata/_edit_lock_ = true
-
-[node name="Bug" parent="Enemies" index="0" instance=ExtResource("15_h1wkx")]
-position = Vector2(-1356, 556)
 
 [node name="Player" parent="." index="7"]
 position = Vector2(14, 171)
@@ -131,6 +135,15 @@ zoom = Vector2(0.3, 0.3)
 
 [node name="Lights" parent="." index="8"]
 metadata/_edit_lock_ = true
+
+[node name="CarPath" type="Path2D" parent="." index="10"]
+position = Vector2(-630, 99)
+curve = SubResource("Curve2D_ow4t5")
+
+[node name="Car" parent="CarPath" index="0" instance=ExtResource("14_n2kdd")]
+position = Vector2(-796.955, 1679.65)
+rotation = 1.38976
+progress = 1016.95
 
 [connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
 [connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]

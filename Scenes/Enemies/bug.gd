@@ -7,7 +7,8 @@ var player_nearby: bool = false
 var can_bite: bool = true
 
 var vulnerable: bool = true
-var health: int = 30
+@export var health: int = 30
+@export var attack_damages: int = 10
 
 func _process(_delta):
 	var direction: Vector2 = (Globals.player_pos - position).normalized()
@@ -18,9 +19,9 @@ func _process(_delta):
 		look_at(Globals.player_pos)
 			
 
-func hit():
+func hit(damages):
 	if (vulnerable):
-		health -= 10
+		health -= damages
 		vulnerable = false
 		$Timers/HitTimer.start()
 		$AnimatedSprite2D.material.set_shader_parameter("u_progress", 0.9)
@@ -59,5 +60,5 @@ func _on_attack_cooldown_timeout():
 
 func _on_animated_sprite_2d_animation_finished():
 	if (player_nearby):
-		Globals.health -= 10
+		Globals.health -= attack_damages
 		$Timers/AttackCooldown.start()

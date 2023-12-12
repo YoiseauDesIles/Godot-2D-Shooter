@@ -9,8 +9,8 @@ var can_grenade: bool = true
 @export var max_speed: int = 750
 var speed: int = max_speed
 
-func hit():
-	Globals.health -= 10
+func hit(damage):
+	Globals.health -= damage
 
 func _process(_delta):
 	

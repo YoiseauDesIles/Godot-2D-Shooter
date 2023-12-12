@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bxre2775xqgk5"]
+[gd_scene load_steps=36 format=3 uid="uid://bxre2775xqgk5"]
 
 [ext_resource type="PackedScene" uid="uid://cwc88epokl4m2" path="res://Scenes/Levels/level.tscn" id="1_y7s6s"]
 [ext_resource type="TileSet" uid="uid://efqk0ufoclbp" path="res://Scenes/Levels/house.tres" id="2_otibp"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://caa2u82cno1hb" path="res://graphics/objects/infestation/small_4.png" id="22_7hl6a"]
 [ext_resource type="Texture2D" uid="uid://cqmgl4m6stkp" path="res://graphics/objects/infestation/spikes.png" id="23_1asf2"]
 [ext_resource type="Texture2D" uid="uid://di74g04nxrykc" path="res://graphics/objects/corner.png" id="24_dxfpu"]
+[ext_resource type="PackedScene" uid="uid://bkavfvte6sl61" path="res://Scenes/Enemies/drone.tscn" id="31_an5sq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d35mc"]
 radius = 41.0
@@ -561,5 +562,8 @@ scale = Vector2(0.523296, 0.523296)
 [node name="DoorLight12" parent="Lights" index="38" instance=ExtResource("21_84rkr")]
 position = Vector2(-123, 2927)
 scale = Vector2(0.523296, 0.523296)
+
+[node name="Drone" parent="." index="11" instance=ExtResource("31_an5sq")]
+position = Vector2(310, -423)
 
 [connection signal="body_entered" from="ExitGateArea" to="." method="_on_exit_gate_area_body_entered"]
