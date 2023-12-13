@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://de1yyr3feia0t"]
+[gd_scene load_steps=10 format=3 uid="uid://de1yyr3feia0t"]
 
 [ext_resource type="Script" path="res://Scenes/houses/house.gd" id="1_6q0rc"]
 [ext_resource type="PackedScene" uid="uid://m21k0a5cyyqx" path="res://Scenes/Objects/simple_light.tscn" id="2_4pcgg"]
 [ext_resource type="TileSet" uid="uid://efqk0ufoclbp" path="res://Scenes/Levels/house.tres" id="2_7buoe"]
 [ext_resource type="PackedScene" uid="uid://np67t062jscm" path="res://Scenes/Objects/wall_light.tscn" id="3_v8eic"]
+[ext_resource type="PackedScene" uid="uid://dji1ye1ud1hkj" path="res://Scenes/Objects/door_light.tscn" id="5_st0kl"]
+[ext_resource type="PackedScene" uid="uid://crp4xgndj1yf6" path="res://Scenes/Container/toilet.tscn" id="6_rbe37"]
+[ext_resource type="PackedScene" uid="uid://c5luve5ajnj71" path="res://Scenes/Objects/bed.tscn" id="7_dtwbh"]
+[ext_resource type="PackedScene" uid="uid://cm4fh4porewrg" path="res://Scenes/Container/crate.tscn" id="8_yotu7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oen3a"]
-size = Vector2(2265, 1501)
+size = Vector2(2260, 1541)
 
 [node name="House" type="Area2D"]
 position = Vector2(594, -192)
@@ -14,7 +18,7 @@ collision_layer = 16
 script = ExtResource("1_6q0rc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-591.5, 183.5)
+position = Vector2(-588, 211.5)
 shape = SubResource("RectangleShape2D_oen3a")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -35,29 +39,69 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(65534, 65536, 7, 65533, 0, 6, 131070, 65536, 6, 196606, 327680, 8, 65531, 262144, 7, 65536, 65536, 6, 0, 65536, 6, -65536, 65536, 7, -2, 196608, 8, -5, 262144, 7, -3, 0, 6, 131072, 327680, 8, -65538, 327680, 6)
+layer_2/tile_data = PackedInt32Array(65534, 65536, 7, 65533, 0, 6, 131070, 65536, 6, 196606, 327680, 8, 65531, 262144, 7, 65536, 65536, 6, -2, 196608, 8, -5, 262144, 7, -3, 0, 6, 131072, 327680, 8, -65538, 327680, 6, 0, 327680, 6, -65535, 393216, 7, -65536, 262144, 7)
 
 [node name="SimpleLight" parent="." instance=ExtResource("2_4pcgg")]
 position = Vector2(162, 563)
 rotation = 1.5708
 
+[node name="SimpleLight3" parent="." instance=ExtResource("2_4pcgg")]
+position = Vector2(509, 435)
+rotation = 1.5708
+
 [node name="SimpleLight2" parent="." instance=ExtResource("2_4pcgg")]
 position = Vector2(-789, -161)
 
-[node name="WallLight" parent="." instance=ExtResource("3_v8eic")]
-position = Vector2(483, 210)
-rotation = -1.5708
-scale = Vector2(0.7, 0.7)
-
-[node name="WallLight2" parent="." instance=ExtResource("3_v8eic")]
-position = Vector2(-1150, -473)
-rotation = 3.14159
-scale = Vector2(0.7, 0.7)
-
 [node name="WallLight3" parent="." instance=ExtResource("3_v8eic")]
-position = Vector2(-632, 542)
-rotation = -1.5708
-scale = Vector2(0.7, 0.7)
+position = Vector2(-898, 246)
+rotation = -3.15063
+scale = Vector2(0.380617, 0.380617)
+
+[node name="DoorLight" parent="." instance=ExtResource("5_st0kl")]
+position = Vector2(261, -195)
+
+[node name="DoorLight7" parent="." instance=ExtResource("5_st0kl")]
+position = Vector2(196, 254)
+rotation = 1.59957
+
+[node name="DoorLight2" parent="." instance=ExtResource("5_st0kl")]
+position = Vector2(-445, -195)
+
+[node name="DoorLight3" parent="." instance=ExtResource("5_st0kl")]
+position = Vector2(-1135, -208)
+
+[node name="DoorLight4" parent="." instance=ExtResource("5_st0kl")]
+position = Vector2(-1586, -188)
+
+[node name="DoorLight5" parent="." instance=ExtResource("5_st0kl")]
+position = Vector2(-1596, 203)
+
+[node name="DoorLight6" parent="." instance=ExtResource("5_st0kl")]
+position = Vector2(-1140, 208)
+
+[node name="Bed" parent="." instance=ExtResource("7_dtwbh")]
+position = Vector2(-847, 760)
+scale = Vector2(0.725793, 0.725793)
+
+[node name="Crate" parent="." instance=ExtResource("8_yotu7")]
+position = Vector2(-1575, 550)
+rotation = 1.57384
+
+[node name="Crate3" parent="." instance=ExtResource("8_yotu7")]
+position = Vector2(-463, 555)
+rotation = 1.57384
+
+[node name="Crate2" parent="." instance=ExtResource("8_yotu7")]
+position = Vector2(-1155, -405)
+rotation = 3.14231
+
+[node name="Crate4" parent="." instance=ExtResource("8_yotu7")]
+position = Vector2(-70.0001, -407)
+rotation = 3.14231
+
+[node name="Toilet" parent="." instance=ExtResource("6_rbe37")]
+position = Vector2(335, 791)
+rotation = 3.14016
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
