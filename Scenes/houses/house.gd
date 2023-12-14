@@ -3,7 +3,7 @@ extends Area2D
 signal player_entered
 signal player_exited
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	player_entered.emit()
 
 

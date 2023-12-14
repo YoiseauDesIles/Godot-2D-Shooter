@@ -67,7 +67,7 @@ shape = SubResource("CircleShape2D_3bo6w")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 collision_layer = 2
-collision_mask = 11
+collision_mask = 15
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
 polygon = PackedVector2Array(62, -161, 169, -169, 239, -85, 239, 112, 173, 160, 52, 171, 4, 130, -42, 176, -180, 174, -178, 63, -238, 36, -238, -37, -169, -104, -175, -173, -46, -175, 23, -119)
