@@ -4,14 +4,14 @@ signal stat_change
 
 var player_hit_sound: AudioStreamPlayer2D
 
-var laser_amount = 20:
+var laser_amount = 35:
 	#get:
 	#	return laser_amount
 	set(value):
 		laser_amount = value
 		stat_change.emit()
 	
-var grenade_amount = 5:
+var grenade_amount = 8:
 	#get:
 	#	return grenade_amount
 	set(value):
@@ -19,7 +19,7 @@ var grenade_amount = 5:
 		stat_change.emit()
 
 var player_vulnerable: bool = true
-var health = 60: 
+var health = 100: 
 	#not useful
 	#get:
 	#	return health
@@ -36,6 +36,11 @@ var health = 60:
 				
 		stat_change.emit()
 
+var enemies_left = 20:
+	set(value):
+		enemies_left = value
+		stat_change.emit()
+		
 #Create a timer in script
 func player_invunerable_timer():
 	await get_tree().create_timer(0.5).timeout

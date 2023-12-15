@@ -45,6 +45,12 @@ func _process(_delta):
 		$GrenadeTimer.start()
 		grenade.emit(grenade_pos, player_direction)
 
+	if (Globals.health <= 0):
+		TransitionLayer.change_scene("res://Scenes/Levels/failure.tscn")
+		queue_free()
+		
+	if (Globals.enemies_left <= 0):
+		TransitionLayer.change_scene("res://Scenes/Levels/victory.tscn")
 
 func _on_laser_timer_timeout():
 	can_laser = true

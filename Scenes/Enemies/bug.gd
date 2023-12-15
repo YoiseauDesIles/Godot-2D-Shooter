@@ -29,6 +29,7 @@ func hit(damages):
 		$AudioStreamPlayer2D.play()
 	if (health <= 0):
 		await get_tree().create_timer(0.4).timeout
+		Globals.enemies_left -= 1
 		queue_free()
 
 

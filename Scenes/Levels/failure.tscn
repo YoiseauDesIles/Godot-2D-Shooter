@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://pjun206u76ge"]
+
+[ext_resource type="FontFile" uid="uid://ojidmulvx7og" path="res://graphics/ui/subatomic.tsoonami.ttf" id="1_01vqq"]
+
+[sub_resource type="Theme" id="Theme_6y6vg"]
+default_font = ExtResource("1_01vqq")
+default_font_size = 60
+
+[node name="Failure" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 493.0
+offset_top = 338.0
+offset_right = 808.0
+offset_bottom = 393.0
+theme = SubResource("Theme_6y6vg")
+text = "FAILURE..."

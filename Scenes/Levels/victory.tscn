@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0rr6gusjto4d"]
+
+[ext_resource type="FontFile" uid="uid://ojidmulvx7og" path="res://graphics/ui/subatomic.tsoonami.ttf" id="1_ydo4x"]
+
+[sub_resource type="Theme" id="Theme_yrueo"]
+default_font = ExtResource("1_ydo4x")
+default_font_size = 60
+
+[node name="Victory" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 492.0
+offset_top = 348.0
+offset_right = 841.0
+offset_bottom = 403.0
+size_flags_horizontal = 4
+theme = SubResource("Theme_yrueo")
+text = "VICTORY !!"

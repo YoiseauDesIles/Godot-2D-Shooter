@@ -48,11 +48,11 @@ occluder = SubResource("OccluderPolygon2D_yo8my")
 metadata/_edit_lock_ = true
 
 [node name="LaserTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [node name="GrenadeTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 
 [node name="LaserStartPositions" type="Node2D" parent="."]
 

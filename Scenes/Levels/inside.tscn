@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bxre2775xqgk5"]
+[gd_scene load_steps=39 format=3 uid="uid://bxre2775xqgk5"]
 
 [ext_resource type="PackedScene" uid="uid://cwc88epokl4m2" path="res://Scenes/Levels/level.tscn" id="1_y7s6s"]
 [ext_resource type="TileSet" uid="uid://efqk0ufoclbp" path="res://Scenes/Levels/house.tres" id="2_otibp"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cqmgl4m6stkp" path="res://graphics/objects/infestation/spikes.png" id="23_1asf2"]
 [ext_resource type="Texture2D" uid="uid://di74g04nxrykc" path="res://graphics/objects/corner.png" id="24_dxfpu"]
 [ext_resource type="PackedScene" uid="uid://bf5cw5sjrco5p" path="res://Scenes/Enemies/bug.tscn" id="25_dgtvo"]
+[ext_resource type="PackedScene" uid="uid://vcnjnkur4kww" path="res://Scenes/Enemies/scout.tscn" id="26_ye6f6"]
 [ext_resource type="PackedScene" uid="uid://bkavfvte6sl61" path="res://Scenes/Enemies/drone.tscn" id="31_an5sq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d35mc"]
@@ -45,6 +46,8 @@ radius = 91.0494
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir6v7"]
 size = Vector2(366, 717)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_oa3x1"]
 
 [node name="Inside" instance=ExtResource("1_y7s6s")]
 script = ExtResource("2_yp51u")
@@ -349,7 +352,52 @@ position = Vector2(5279, -392.5)
 shape = SubResource("RectangleShape2D_ir6v7")
 
 [node name="Bug" parent="Enemies" index="0" instance=ExtResource("25_dgtvo")]
-position = Vector2(3790, 554)
+position = Vector2(4191, 1182)
+
+[node name="Bug2" parent="Enemies" index="1" instance=ExtResource("25_dgtvo")]
+position = Vector2(3594, 1038)
+
+[node name="Bug3" parent="Enemies" index="2" instance=ExtResource("25_dgtvo")]
+position = Vector2(2881, 1013)
+
+[node name="Bug4" parent="Enemies" index="3" instance=ExtResource("25_dgtvo")]
+position = Vector2(2289, 984)
+
+[node name="Bug5" parent="Enemies" index="4" instance=ExtResource("25_dgtvo")]
+position = Vector2(418, 1052)
+
+[node name="Bug6" parent="Enemies" index="5" instance=ExtResource("25_dgtvo")]
+position = Vector2(-1218, 1027)
+
+[node name="Bug7" parent="Enemies" index="6" instance=ExtResource("25_dgtvo")]
+position = Vector2(-2989, 1002)
+
+[node name="Bug9" parent="Enemies" index="7" instance=ExtResource("25_dgtvo")]
+position = Vector2(-1657, 2462)
+
+[node name="Bug10" parent="Enemies" index="8" instance=ExtResource("25_dgtvo")]
+position = Vector2(691, 2455)
+
+[node name="Bug11" parent="Enemies" index="9" instance=ExtResource("25_dgtvo")]
+position = Vector2(-1421, 4574)
+
+[node name="Bug12" parent="Enemies" index="10" instance=ExtResource("25_dgtvo")]
+position = Vector2(954, 4601)
+
+[node name="Bug8" parent="Enemies" index="11" instance=ExtResource("25_dgtvo")]
+position = Vector2(-2861, -851)
+
+[node name="Scout" parent="Enemies" index="12" instance=ExtResource("26_ye6f6")]
+position = Vector2(892, -465)
+
+[node name="Scout2" parent="Enemies" index="13" instance=ExtResource("26_ye6f6")]
+position = Vector2(-283, -171)
+
+[node name="Drone" parent="Enemies" index="14" instance=ExtResource("31_an5sq")]
+position = Vector2(2322, -1747)
+
+[node name="Drone2" parent="Enemies" index="15" instance=ExtResource("31_an5sq")]
+position = Vector2(-1357, -1699)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="7"]
 color = Color(0.270588, 0.454902, 0.517647, 1)
@@ -567,7 +615,7 @@ scale = Vector2(0.523296, 0.523296)
 position = Vector2(-123, 2927)
 scale = Vector2(0.523296, 0.523296)
 
-[node name="Drone" parent="." index="11" instance=ExtResource("31_an5sq")]
-position = Vector2(1865, -718)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="11"]
+navigation_polygon = SubResource("NavigationPolygon_oa3x1")
 
 [connection signal="body_entered" from="ExitGateArea" to="." method="_on_exit_gate_area_body_entered"]

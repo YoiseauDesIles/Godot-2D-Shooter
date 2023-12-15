@@ -35,6 +35,9 @@ func _process(delta):
 			if in_range and "hit" in target:
 				target.hit(attack_damages)
 				
+func destroy():
+	Globals.enemies_left -= 1
+	queue_free()
 
 func hit(damage):
 	if vulnerable:
@@ -46,6 +49,7 @@ func hit(damage):
 	if health <= 0:
 		$AnimationPlayer.play("Explosion")
 		explosion_active = true
+		
 
 func stop_movement():
 	speed_multiplier = 0

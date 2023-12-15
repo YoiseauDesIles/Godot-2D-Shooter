@@ -30,6 +30,7 @@ func hit(damages):
 		$Sprite2D.material.set_shader_parameter("u_progress", 1)
 		$HitSound.play()
 	if (health <= 0):
+		Globals.enemies_left -= 1
 		queue_free()
 
 func _on_attack_area_body_entered(_body):

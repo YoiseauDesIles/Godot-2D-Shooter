@@ -71,6 +71,7 @@ func hit(damages):
 		$HitSound.play()
 		
 	if health <= 0:
+		Globals.enemies_left -= 1
 		queue_free()
 
 func _on_hit_timer_timeout():
