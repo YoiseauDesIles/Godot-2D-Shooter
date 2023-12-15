@@ -8,6 +8,7 @@ var direction
 func _ready():
 	$SelfDestructTimer.start()
 
+
 func _process(delta):
 	position += speed * direction * delta
 

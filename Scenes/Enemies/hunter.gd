@@ -66,9 +66,14 @@ func hit(damages):
 		vulnerable = false
 		health -= damages
 		$Timers/HitTimer.start()
+		$Skeleton2D/Torso/Torso.material.set_shader_parameter("u_progress", 0.9)
+		$Skeleton2D/Torso/Head/Sprite2D.material.set_shader_parameter("u_progress", 0.9)
+		$HitSound.play()
+		
 	if health <= 0:
 		queue_free()
 
 func _on_hit_timer_timeout():
 	vulnerable = true
-		
+	$Skeleton2D/Torso/Torso.material.set_shader_parameter("u_progress", 0)
+	$Skeleton2D/Torso/Head/Sprite2D.material.set_shader_parameter("u_progress", 0)

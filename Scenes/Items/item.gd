@@ -27,8 +27,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	print("body entered")
-	print(body)
+
 	#body.add_item(type)
 	if (type == 'laser'):
 		Globals.laser_amount += 5
@@ -36,4 +35,8 @@ func _on_body_entered(body):
 		Globals.grenade_amount += 2
 	if (type == 'health'):
 		Globals.health += 10
+		
+	$AudioStreamPlayer2D.play()
+	$Sprite2D.hide()
+	await $AudioStreamPlayer2D.finished
 	queue_free()

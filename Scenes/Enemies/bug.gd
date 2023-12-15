@@ -26,28 +26,34 @@ func hit(damages):
 		$Timers/HitTimer.start()
 		$AnimatedSprite2D.material.set_shader_parameter("u_progress", 0.9)
 		$Particules/HitParticles.emitting = true
+		$AudioStreamPlayer2D.play()
 	if (health <= 0):
 		await get_tree().create_timer(0.4).timeout
 		queue_free()
 
 
+func _on_notice_area_2d_body_entered(body):
+	if body.is_in_group("Player"):
+		player_noticed = true
+		$AnimatedSprite2D.play("walk")
 
-
-func _on_notice_area_2d_body_entered(_body):
-	player_noticed = true
-	$AnimatedSprite2D.play("walk")
-
-func _on_notice_area_2d_body_exited(_body):
-	player_noticed = false
-	$AnimatedSprite2D.stop()
+func _on_notice_area_2d_body_exited(body):
+	if body.is_in_group("Player"):
+		player_noticed = false
+		$AnimatedSprite2D.pause()
 	
-func _on_attack_area_2d_body_entered(_body):
-	player_nearby = true
-	$AnimatedSprite2D.play("attack")
+func _on_attack_area_2d_body_entered(body):
+	if body.is_in_group("Player"):
+		player_nearby = true
+		$AnimatedSprite2D.pause()
+		$AnimatedSprite2D.play("attack")
 
-func _on_attack_area_2d_body_exited(_body):
-	player_nearby = false
-
+func _on_attack_area_2d_body_exited(body):
+	if body.is_in_group("Player"):
+		player_nearby = false
+		await get_tree().create_timer(0.7).timeout
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("walk")
 
 func _on_hit_timer_timeout():
 	vulnerable = true

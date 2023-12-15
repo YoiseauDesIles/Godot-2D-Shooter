@@ -2,6 +2,7 @@ extends ItemContainer
 
 func hit(_damage):
 	if not opened:
+		$AudioStreamPlayer2D.play()
 		$LidSprite.hide()
 		
 		for i in range(15):

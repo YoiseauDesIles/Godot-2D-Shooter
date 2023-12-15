@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://chjlobvb80fg5"]
+[gd_scene load_steps=27 format=3 uid="uid://chjlobvb80fg5"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/hunter.gd" id="1_ufba2"]
+[ext_resource type="Shader" path="res://Scenes/Enemies/hunter.gdshader" id="2_c5hiv"]
 [ext_resource type="Texture2D" uid="uid://df7yy58xjo1rb" path="res://graphics/enemies/hunter/parts/torso.png" id="2_qexa7"]
 [ext_resource type="Texture2D" uid="uid://i7n1l1badljk" path="res://graphics/enemies/hunter/parts/leg_front_inner.png" id="3_gxcd3"]
 [ext_resource type="Texture2D" uid="uid://sc3pepiwm6pd" path="res://graphics/enemies/hunter/parts/leg_front_outer.png" id="4_rc11m"]
@@ -8,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://0c38t7sp4h5i" path="res://graphics/enemies/hunter/parts/claw.png" id="6_lklyp"]
 [ext_resource type="Texture2D" uid="uid://b451xncr5m7qb" path="res://graphics/enemies/hunter/parts/leg_back_inner.png" id="6_mehpa"]
 [ext_resource type="Texture2D" uid="uid://vv7t650i6sh" path="res://graphics/enemies/hunter/parts/leg_back_outer.png" id="7_oydls"]
+[ext_resource type="AudioStream" uid="uid://c8ch4nynvf46f" path="res://audio/organic_impact.mp3" id="10_70pqp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nhm1w"]
 radius = 44.0
@@ -18,6 +20,8 @@ radius = 1579.37
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w8sdm"]
 radius = 95.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvvmk"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_u46yt"]
 resource_name = "Front Right Leg"
@@ -60,6 +64,90 @@ modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_u46yt")
 modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_ec6sd")
 modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_vvpgr")
 modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_uj6dm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwcjk"]
+shader = ExtResource("2_c5hiv")
+shader_parameter/u_color = Color(1, 1, 1, 1)
+shader_parameter/u_progress = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l72rx"]
+shader = ExtResource("2_c5hiv")
+shader_parameter/u_color = Color(1, 1, 1, 1)
+shader_parameter/u_progress = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qf1nu"]
+shader = ExtResource("2_c5hiv")
+shader_parameter/u_color = Color(1, 1, 1, 1)
+shader_parameter/u_progress = 0.0
+
+[sub_resource type="Animation" id="Animation_8rs76"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Torso/Head/Sprite2D/RightClaw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0698132]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Torso/Head/Sprite2D/LeftClaw:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.06465]
+}
+
+[sub_resource type="Animation" id="Animation_ovgpu"]
+resource_name = "attack"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Torso/Head/Sprite2D/RightClaw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0698132, 1.0472, -0.261799, -0.261799, 0.0698132]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Torso/Head/Sprite2D/LeftClaw:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.06465, 0.261799, 0.261799, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_yq28x"]
 resource_name = "walk"
@@ -114,75 +202,6 @@ tracks/3/keys = {
 "values": [Vector2(-95, 166), Vector2(-158, 119), Vector2(-154, 101), Vector2(-95, 166)]
 }
 
-[sub_resource type="Animation" id="Animation_ovgpu"]
-resource_name = "attack"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton2D/Torso/Head/Sprite2D/RightClaw:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0698132, 1.0472, -0.261799, -0.261799, 0.0698132]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton2D/Torso/Head/Sprite2D/LeftClaw:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -1.06465, 0.261799, 0.261799, 0.0]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"attack"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_8rs76"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton2D/Torso/Head/Sprite2D/RightClaw:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0698132]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton2D/Torso/Head/Sprite2D/LeftClaw:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.06465]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0pkda"]
 _data = {
 "RESET": SubResource("Animation_8rs76"),
@@ -222,12 +241,14 @@ autostart = true
 wait_time = 0.3
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
+material = SubResource("ShaderMaterial_fvvmk")
 modification_stack = SubResource("SkeletonModificationStack2D_geqrb")
 
 [node name="Torso" type="Bone2D" parent="Skeleton2D"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Torso" type="Sprite2D" parent="Skeleton2D/Torso"]
+material = SubResource("ShaderMaterial_qwcjk")
 position = Vector2(6, 0)
 texture = ExtResource("2_qexa7")
 
@@ -281,6 +302,7 @@ length = 100.0
 bone_angle = -90.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/Head"]
+material = SubResource("ShaderMaterial_l72rx")
 position = Vector2(1, -54)
 texture = ExtResource("5_8ceiv")
 
@@ -308,6 +330,7 @@ scale = Vector2(0.999953, 0.999953)
 rest = Transform2D(0.71924, -0.694694, 0.694694, 0.71924, 32, -8)
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Torso/BackRightLeg"]
+material = SubResource("ShaderMaterial_qf1nu")
 position = Vector2(14, 31)
 texture = ExtResource("6_mehpa")
 
@@ -362,6 +385,10 @@ position = Vector2(120.5, 141.5)
 libraries = {
 "": SubResource("AnimationLibrary_0pkda")
 }
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_70pqp")
+volume_db = -17.781
 
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
