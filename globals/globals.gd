@@ -36,7 +36,7 @@ var health = 100:
 				
 		stat_change.emit()
 
-var enemies_left = 20:
+var enemies_left = 22:
 	set(value):
 		enemies_left = value
 		stat_change.emit()
